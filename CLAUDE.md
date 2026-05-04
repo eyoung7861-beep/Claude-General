@@ -1,18 +1,11 @@
-# CLAUDE.md
+@shared/CLAUDE.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+# Arcads-specific session rules
 
-## Repository Status
-
-This is a new, empty repository. This CLAUDE.md should be updated as the project takes shape to reflect actual build commands, architecture, and conventions.
-
-## Getting Started
-
-When the project is initialized:
-- Document the build, lint, and test commands in this file
-- Describe the high-level architecture and how major components interact
-- Note any non-obvious conventions or constraints
-
-## Branch Convention
-
-Feature development happens on branches prefixed with `claude/` for AI-assisted work. Push to `origin/<branch-name>` with `-u` on first push.
+- **API:** Arcads external API (`https://external-api.arcads.ai`).
+- **Auth:** HTTP Basic via `ARCADS_BASIC_AUTH` or `ARCADS_API_KEY`. Setup check: `./scripts/check-arcads-env.sh`.
+- **Skill:** `.claude/skills/arcads-external-api/SKILL.md` for API calls, prompts, and polling.
+- **YouTube thumbnails:** `.claude/skills/generate-youtube-thumbnail/SKILL.md` (uses the Nano Banana 2 image endpoint via Arcads).
+- **Cost disclosure:** Always present credit totals as **estimates** — Arcads has no billing endpoint. Tell the user to confirm exact pricing in the Arcads platform.
+- **Logging:** Log every generation call to `logs/arcads-api.jsonl`.
+- **First-time setup:** If `.env` is missing, run `./scripts/setup.sh`. If `MASTER_CONTEXT.md` is missing, copy `MASTER_CONTEXT.template.md` to `MASTER_CONTEXT.md`.
